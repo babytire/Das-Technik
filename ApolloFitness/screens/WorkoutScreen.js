@@ -1,15 +1,16 @@
 import React from 'react';
 import {
+
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-export default function HomeScreen() {
+export default function WorkoutScreen() {
   return (
     <View style={styles.container}>
       <Text>
-         HOME STUFF GOES HERE
+         WORKOUT STUFF GOES HERE
       </Text>
     </View>
   );

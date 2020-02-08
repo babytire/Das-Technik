@@ -5,8 +5,9 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import WaterScreen from '../screens/WaterScreen';
+import FoodScreen from '../screens/FoodScreen';
+import WorkoutScreen from '../screens/WorkoutScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -36,42 +37,57 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const WaterStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Water: WaterScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+WaterStack.navigationOptions = {
+  tabBarLabel: 'Water',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
 
-LinksStack.path = '';
+WaterStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const FoodStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Food: FoodScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+FoodStack.navigationOptions = {
+  tabBarLabel: 'Food',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+const WorkoutStack = createStackNavigator(
+   {
+     Workout: WorkoutScreen,
+   },
+   config
+ );
+ 
+ WorkoutStack.navigationOptions = {
+   tabBarLabel: 'Workout',
+   tabBarIcon: ({ focused }) => (
+     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+   ),
+ };
+
+WorkoutStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinkszStack,
-  SettingsStack,
+  WaterStack,
+  FoodStack,
+  WorkoutStack,
 });
 
 tabNavigator.path = '';

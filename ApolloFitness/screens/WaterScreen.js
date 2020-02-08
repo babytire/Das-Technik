@@ -1,15 +1,16 @@
 import React from 'react';
 import {
+
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-export default function HomeScreen() {
+export default function WaterScreen() {
   return (
     <View style={styles.container}>
       <Text>
-         HOME STUFF GOES HERE
+         WATER STUFF GOES HERE
       </Text>
     </View>
   );

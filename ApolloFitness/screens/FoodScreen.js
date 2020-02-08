@@ -5,11 +5,11 @@ import {
   View,
 } from 'react-native';
 
-export default function HomeScreen() {
+export default function FoodScreen() {
   return (
     <View style={styles.container}>
       <Text>
-         HOME STUFF GOES HERE
+         FOOD STUFF GOES HERE
       </Text>
     </View>
   );
