@@ -7,7 +7,6 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import WaterScreen from '../screens/WaterScreen';
 import FoodScreen from '../screens/FoodScreen';
-import WorkoutScreen from '../screens/WorkoutScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -67,27 +66,10 @@ FoodStack.navigationOptions = {
   ),
 };
 
-const WorkoutStack = createStackNavigator(
-   {
-     Workout: WorkoutScreen,
-   },
-   config
- );
- 
- WorkoutStack.navigationOptions = {
-   tabBarLabel: 'Workout',
-   tabBarIcon: ({ focused }) => (
-     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-   ),
- };
-
-WorkoutStack.path = '';
-
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   WaterStack,
   FoodStack,
-  WorkoutStack,
 });
 
 tabNavigator.path = '';
