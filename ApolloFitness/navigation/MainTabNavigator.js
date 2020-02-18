@@ -22,7 +22,6 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-home': 'md-home'}/>
   ),
@@ -38,7 +37,6 @@ const WaterStack = createStackNavigator(
 );
 
 WaterStack.navigationOptions = {
-  tabBarLabel: 'Water',
   tabBarIcon: <Image style={{ width: 30, height: 30 }} source={require('../assets/images/bottleTabBar.png')}/>,
 };
 
@@ -52,14 +50,17 @@ const FoodStack = createStackNavigator(
 );
 
 FoodStack.navigationOptions = {
-  tabBarLabel: 'Food',
-  tabBarIcon: <Image style={{ width: 25, height: 25 }} source={require('../assets/images/forkSpoonTabBar.png')}/>,
+  tabBarIcon: <Image style={{ width: 30, height: 30 }} source={require('../assets/images/forkSpoonTabBar.png')}/>,
 };
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   WaterStack,
   FoodStack,
+}, {
+  tabBarOptions: {
+    showLabel: false,
+  }
 });
 
 tabNavigator.path = '';
