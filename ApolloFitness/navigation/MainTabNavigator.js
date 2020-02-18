@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -7,6 +7,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import WaterScreen from '../screens/WaterScreen';
 import FoodScreen from '../screens/FoodScreen';
+import { NavigationEvents } from 'react-navigation';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -23,14 +24,7 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-home': 'md-home'}/>
   ),
 };
 
@@ -45,9 +39,7 @@ const WaterStack = createStackNavigator(
 
 WaterStack.navigationOptions = {
   tabBarLabel: 'Water',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
+  tabBarIcon: <Image style={{ width: 30, height: 30 }} source={require('../assets/images/bottleTabBar.png')}/>,
 };
 
 WaterStack.path = '';
@@ -61,9 +53,7 @@ const FoodStack = createStackNavigator(
 
 FoodStack.navigationOptions = {
   tabBarLabel: 'Food',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
+  tabBarIcon: <Image style={{ width: 25, height: 25 }} source={require('../assets/images/forkSpoonTabBar.png')}/>,
 };
 
 const tabNavigator = createBottomTabNavigator({
