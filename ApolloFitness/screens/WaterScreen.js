@@ -4,18 +4,27 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
 } from 'react-native';
 
 export default function WaterScreen() {
   return (
-    <View style={styles.container}>
+    <View style={styles.bottom}>
       <Text>
-         WATER STUFF GOES HERE
+	  0 oz
       </Text>
+      <Button
+	title="Press me"
+	onPress={() => OzDrank += 8}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-   // intentionally empty for now
+	bottom: {
+		flex: 1,
+		justifyContent: 'flex-end',
+		marginBottom: 36
+	}
 });
