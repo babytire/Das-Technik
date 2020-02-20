@@ -7,18 +7,28 @@ import {
   Button,
 } from 'react-native';
 
-export default function WaterScreen() {
-  return (
-    <View style={styles.bottom}>
-      <Text>
-	  0 oz
-      </Text>
-      <Button
-	title="Press me"
-	onPress={() => OzDrank += 8}
-      />
-    </View>
-  );
+export default class WaterScreen extends React.Component {
+    constructor(props) {
+	super(props);
+
+	this.state = {
+	   ozDrank: 0,
+	};
+    }
+
+    render() {
+	return (
+    	<View style={styles.bottom}>
+      	  <Text>
+		{this.state.ozDrank} oz
+      	  </Text>
+          <Button
+	    title="Press me"
+	    onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
+          />
+        </View>
+       );
+   }
 }
 
 const styles = StyleSheet.create({
