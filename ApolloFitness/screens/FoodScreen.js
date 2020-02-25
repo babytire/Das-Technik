@@ -45,27 +45,27 @@ export default function FoodScreen() {
         <TextInput 
           style={{height: 40}}
           placeholder="Type the name of the food here."
-          onChnageText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
         />
         <TextInput 
           style={{height: 40}}
           placeholder="Type the number of calories here."
-          onChnageText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
         />
         <TextInput 
           style={{height: 40}}
           placeholder="Type the number of carbohydrates here."
-          onChnageText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
         />
         <TextInput 
           style={{height: 40}}
           placeholder="Type the amount of protein here."
-          onChnageText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
         />
         <TextInput 
           style={{height: 40}}
           placeholder="Type the amount of fat here."
-          onChnageText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})}
         />
       </View>
     </View>
