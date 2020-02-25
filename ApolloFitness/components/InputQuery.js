@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+import { 
+    View,
+    Text,
+    TextInput,
+ } from 'react-native';
 
 export default class InputQuery extends Component {
     render = () => {
@@ -8,7 +12,7 @@ export default class InputQuery extends Component {
                 flexDirection: 'row', 
                 flex: 1, 
             }}>
-                <Text>{this.props.name}</Text>
+                <Text>{this.props.name + ': '}</Text>
                 <TextInput placeholder={this.props.placeholder}></TextInput>
             </View>
         );
