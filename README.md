@@ -27,12 +27,17 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt update && sudo apt install -y yarn nodejs
 ```
 
-Next, use npm to install node packages globally
+Next, use npm to install node packages globally.
 ```
 sudo npm install -g react-native-cli expo-cli
 ```
 
-Once these are installed, navigate to `Das-Technik/ApolloFitness` and run `npm install` to install project dependencies.
+After, clone the repository to get a local version of the app.
+```
+git clone https://github.com/babytire/Das-Technik.git
+```
+
+Once the cloning is done, navigate to `Das-Technik/ApolloFitness` and run `npm install` to install project dependencies.
 
 Now your environment should be set up! Run `yarn start` to start the metro bundler.
 
