@@ -16,7 +16,7 @@ export default class WaterScreen extends React.Component {
 	   ozDrank: 0,
 	};
     }
-
+ 
     render() {
 	return (
     	<View style={styles.bottom}>
@@ -30,6 +30,38 @@ export default class WaterScreen extends React.Component {
         </View>
        );
    }
+
+  setWaterStorage = async (date, water) => {
+	try {
+		await AsyncStorage.setItem(date, water);
+	}
+	catch (error) {
+		//error savind data
+		consol.log("Saving Water Error")
+	}
+  };
+
+  getWaterStorage = async (date) => { 
+	try {
+		let gotWater = await AsyncStorage.getItem(date)
+		if (gotWater != null) {
+			return gotWater
+		}
+		else {
+			consol.log("No Water Data")
+		}
+	}
+	catch (error) {
+		//error reciving data
+		consol.log("read data error")
+	}
+  };
+
+
+
+
+
+
 }
 
 const styles = StyleSheet.create({
