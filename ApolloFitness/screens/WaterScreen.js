@@ -59,10 +59,16 @@ export default class WaterScreen extends React.Component {
 	}
   };
 
-
-
-
-
+  //removes saved water data  
+  removeWaterStorage = async (date) => {
+        try {
+                AsyncStorage.removeItem(date)
+        }
+        catch (error) {
+                //error removing data
+                consol.log("remove data error")
+        }
+  };
 
 }
 
