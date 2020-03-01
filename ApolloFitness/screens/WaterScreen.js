@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Button,
+  AsyncStorage,
 } from 'react-native';
 
 export default class WaterScreen extends React.Component {
