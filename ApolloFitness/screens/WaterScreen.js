@@ -30,7 +30,8 @@ export default class WaterScreen extends React.Component {
         </View>
        );
    }
-
+  
+  //Saves stored water data
   setWaterStorage = async (date, water) => {
 	try {
 		await AsyncStorage.setItem(date, water);
@@ -41,6 +42,7 @@ export default class WaterScreen extends React.Component {
 	}
   };
 
+  //retrieves saved water data	
   getWaterStorage = async (date) => { 
 	try {
 		let gotWater = await AsyncStorage.getItem(date)
