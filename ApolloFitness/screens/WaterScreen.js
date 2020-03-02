@@ -38,7 +38,7 @@ export default class WaterScreen extends React.Component {
 	}
 	catch (error) {
 		//error savind data
-		consol.log("Saving Water Error")
+		console.log("Saving Water Error")
 	}
   };
 
@@ -50,12 +50,12 @@ export default class WaterScreen extends React.Component {
 			return gotWater
 		}
 		else {
-			consol.log("No Water Data")
+			console.log("No Water Data")
 		}
 	}
 	catch (error) {
 		//error reciving data
-		consol.log("read data error")
+		console.log("read data error")
 	}
   };
 
@@ -66,7 +66,7 @@ export default class WaterScreen extends React.Component {
         }
         catch (error) {
                 //error removing data
-                consol.log("remove data error")
+                console.log("remove data error")
         }
   };
 
