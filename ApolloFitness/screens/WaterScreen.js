@@ -20,14 +20,15 @@ export default class WaterScreen extends React.Component {
 	return (
     <View style={{flex: 1, justifyContent: 'flex-end'}}>
       	<View style={styles.items}>
-            {/*Progress bar is out of 64 oz (8 glasses) until goals are added in a later issue*/}
+            {/*Progress bar is out of 64 oz (8 glasses)
+               until goals are added in a later issue*/}
             <Progress.Bar
-              style={{transform: [{ rotate: '270deg'}]}}
+              style={styles.progressBar}
               progress={this.state.ozDrank / 64}
               width={250}
               height={100}
             />
-            <Text>
+            <Text style={styles.text}>
   		        {this.state.ozDrank} oz
         	  </Text>
         </View>
@@ -52,7 +53,16 @@ const styles = StyleSheet.create({
 
   items: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end'
+    alignItems: 'baseline'
+    },
+
+  progressBar: {
+    transform: [{ rotate: '270deg'}],
+  },
+
+  text: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 64,
   }
 });
