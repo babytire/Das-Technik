@@ -1,6 +1,6 @@
+import * as Progress from 'react-native-progress';
 import React from 'react';
 import {
-
   StyleSheet,
   Text,
   View,
@@ -22,6 +22,9 @@ export default class WaterScreen extends React.Component {
       	  <Text>
 		{this.state.ozDrank} oz
       	  </Text>
+
+        <Progress.Bar progress={this.state.ozDrank / 64} width={200} />
+
           <Button
 	    title="Press me"
 	    onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
@@ -32,7 +35,7 @@ export default class WaterScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	bottom: {
+	button: {
 		flex: 1,
 		justifyContent: 'flex-end',
 		marginBottom: 36
