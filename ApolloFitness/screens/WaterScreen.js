@@ -18,26 +18,35 @@ export default class WaterScreen extends React.Component {
 
     render() {
 	return (
-    	<View style={styles.bottom}>
-      	  <Text>
-		{this.state.ozDrank} oz
-      	  </Text>
-
-        <Progress.Bar progress={this.state.ozDrank / 64} width={200} />
-
-          <Button
-	    title="Press me"
-	    onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
-          />
+    <View style={{flex: 1, justifyContent: 'flex-end'}}>
+      	<View style={styles.items}>
+            <Progress.Bar style={{transform: [{ rotate: '270deg'}]}} progress={this.state.ozDrank / 64} width={250} height={100}/>
+            <Text>
+  		        {this.state.ozDrank} oz
+        	  </Text>
         </View>
+
+        <View style={styles.button}>
+          <Button
+  	          title="Add Glass"
+  	          onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
+            />
+          </View>
+      </View>
        );
    }
 }
 
 const styles = StyleSheet.create({
-	bottom: {
-		flex: 1,
+	button: {
+		flex: 0.3,
 		justifyContent: 'flex-end',
 		marginBottom: 36
-	}
+	},
+
+  items: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end'
+  }
 });
