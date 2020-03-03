@@ -35,7 +35,7 @@ export default class WaterScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	button: {
+	bottom: {
 		flex: 1,
 		justifyContent: 'flex-end',
 		marginBottom: 36
