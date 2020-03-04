@@ -11,23 +11,58 @@ export default class WaterScreen extends React.Component {
     constructor(props) {
 	     super(props);
     }
- 	//Call these functions and not the ones down below when you wish to save, retrieve, or remove water information. Date and Water must be strings!!
-	//Calls saveWaterStorage async function
+ 
 	saveWater = (date, water) => {
+		alert('entered')
 		this.setWaterStorage(date, water)
 	}
-	//Calls getWaterStorage async function
+
 	getWater = (date) => {
+		alert("entered")
 		this.getWaterStorage(date)
+		
 	}
-	//Calls removeWaterStorage async function
-	removeWater = (date) => {
+
+	reomveWater = (date) => {
 		this.removeWaterStorage(date)
 	}
 
+	//this.setState({ozDrank: this.state.ozDrank + 8})}
+
+
     render() {
-	     return (
-         <WaterAddButton />
+	return (
+    	<View style={styles.bottom}>
+      	  <Text>
+		{this.state.ozDrank} oz
+      	  </Text>
+	  <Button
+            title="Press me"
+            onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
+          />
+
+
+
+          <Button
+	    title="Save me"
+	    onPress={() => this.saveWater('11/11/11', this.state.ozDrank)}
+          />
+	  <Button
+            title="Show me"
+            onPress={() => this.getWater('11/11/11')}
+          />
+
+	  <TouchableOpacity onPress = {this.saveWater('11/11/11', '15 Oz')}>
+		<Text> Click to Save</Text>
+	  </TouchableOpacity>
+	  <TouchableOpacity onPress = {this.getWater('11/11/11')}>
+                <Text> Click to pull</Text>
+          </TouchableOpacity>
+	  <TouchableOpacity onPress = {this.removeWaterStorage('11/11/11')}>
+                <Text> Click to Remove</Text>
+          </TouchableOpacity>
+	
+        </View>
        );
    }
   
