@@ -7,6 +7,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import WaterScreen from '../screens/WaterScreen';
 import FoodScreen from '../screens/FoodScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import { NavigationEvents } from 'react-navigation';
 
 const config = Platform.select({
@@ -53,10 +54,23 @@ FoodStack.navigationOptions = {
   tabBarIcon: <Image style={{ width: 25, height: 25 }} source={require('../assets/images/eatTabBar.png')}/>,
 };
 
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+  },
+  config
+);
+
+ProfileStack.navigationOptions = {
+  tabBarIcon:
+    <TabBarIcon name = {Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'}/>
+};
+
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   WaterStack,
   FoodStack,
+  ProfileStack,
 }, {
   tabBarOptions: {
     showLabel: false,

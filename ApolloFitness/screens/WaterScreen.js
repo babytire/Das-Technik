@@ -1,20 +1,13 @@
 import React from 'react';
 import {
-
   StyleSheet,
-  Text,
-  View,
-  Button,
   AsyncStorage,
 } from 'react-native';
+import WaterAddButton from '../components/WaterAddButton'
 
 export default class WaterScreen extends React.Component {
     constructor(props) {
-	super(props);
-
-	this.state = {
-	   ozDrank: 0,
-	};
+	     super(props);
     }
  	//Call these functions and not the ones down below when you wish to save, retrieve, or remove water information. Date and Water must be strings!!
 	//Calls saveWaterStorage async function
@@ -31,16 +24,8 @@ export default class WaterScreen extends React.Component {
 	}
 
     render() {
-	return (
-    	<View style={styles.bottom}>
-      	  <Text>
-		{this.state.ozDrank} oz
-      	  </Text>
-          <Button
-	    title="Press me"
-	    onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
-          />
-        </View>
+	     return (
+         <WaterAddButton />
        );
    }
   
@@ -82,13 +67,4 @@ export default class WaterScreen extends React.Component {
                 console.log("remove data error")
         }
   };
-
 }
-
-const styles = StyleSheet.create({
-	bottom: {
-		flex: 1,
-		justifyContent: 'flex-end',
-		marginBottom: 36
-	}
-});
