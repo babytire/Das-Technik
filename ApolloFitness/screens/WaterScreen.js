@@ -16,7 +16,20 @@ export default class WaterScreen extends React.Component {
 	   ozDrank: 0,
 	};
     }
- 
+ 	//Call these functions and not the ones down below when you wish to save, retrieve, or remove water information. Date and Water must be strings!!
+	//Calls saveWaterStorage async function
+	saveWater = (date, water) => {
+		this.setWaterStorage(date, water)
+	}
+	//Calls getWaterStorage async function
+	getWater = (date) => {
+		this.getWaterStorage(date)
+	}
+	//Calls removeWaterStorage async function
+	removeWater = (date) => {
+		this.removeWaterStorage(date)
+	}
+
     render() {
 	return (
     	<View style={styles.bottom}>
