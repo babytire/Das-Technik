@@ -9,6 +9,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+const temp1 = "tacos";
+const temp2 = "77";
+
+
+
+
 export default class WaterScreen extends React.Component {
     constructor(props) {
 	super(props);
@@ -19,12 +25,10 @@ export default class WaterScreen extends React.Component {
     }
  
 	saveWater = (date, water) => {
-		alert('entered')
 		this.setWaterStorage(date, water)
 	}
 
 	getWater = (date) => {
-		alert("entered")
 		this.getWaterStorage(date)
 		
 	}
@@ -47,26 +51,15 @@ export default class WaterScreen extends React.Component {
             onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
           />
 
-
-
           <Button
 	    title="Save me"
-	    onPress={() => this.saveWater('11/11/11', this.state.ozDrank)}
+	    onPress={() => this.saveWater(temp1, temp2)}
           />
 	  <Button
             title="Show me"
-            onPress={() => this.getWater('11/11/11')}
+            onPress={() => this.getWater(temp1)}
           />
 
-	  <TouchableOpacity onPress = {this.saveWater('11/11/11', '15 Oz')}>
-		<Text> Click to Save</Text>
-	  </TouchableOpacity>
-	  <TouchableOpacity onPress = {this.getWater('11/11/11')}>
-                <Text> Click to pull</Text>
-          </TouchableOpacity>
-	  <TouchableOpacity onPress = {this.removeWaterStorage('11/11/11')}>
-                <Text> Click to Remove</Text>
-          </TouchableOpacity>
 	
         </View>
        );
@@ -86,11 +79,9 @@ export default class WaterScreen extends React.Component {
   //retrieves saved water data	
   getWaterStorage = async (date) => { 
 	try {
-		alert('entered2')
 		let gotWater = await AsyncStorage.getItem(date)
 		alert(gotWater)		
 		if (gotWater != null) {
-			alert(gotWater)
 			return gotWater
 		}
 		else {
