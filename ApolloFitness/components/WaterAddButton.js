@@ -37,14 +37,17 @@ export default class WaterAddButton extends Component {
               </View>
 
               <View style={styles.button}>
-                <Slider
-                  minimumValue = {1}
-                  maximumValue = {32}
-                  value = {8}
-                  step = {1}
-                  onValueChange={(sliderValue) =>
-                    this.setState({sliderState: sliderValue})}
-                />
+              <Slider
+                style = {{marginBottom: 10}}
+                thumbTintColor = {"blue"}
+                minimumTrackTintColor = {"blue"}
+                minimumValue = {1}
+                maximumValue = {32}
+                value = {8}
+                step = {1}
+                onValueChange={(sliderValue) =>
+                  this.setState({sliderState: sliderValue})}
+              />
                 <Button
                     title={"Add " + this.state.sliderState + " oz"}
                     onPress={() =>
@@ -60,7 +63,8 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     justifyContent: 'flex-end',
-    marginBottom: 36
+    marginBottom: 36,
+    marginTop: 10
   },
 
   items: {
