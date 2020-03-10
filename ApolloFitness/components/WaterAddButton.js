@@ -84,7 +84,7 @@ export default class WaterAddButton extends Component {
                     this.setState({sliderState: sliderValue})}
                 />
                 <Button
-                    title="Add Glass"
+                    title={"Add " + this.state.sliderState + " oz"}
                     onPress={() =>
                       this.setState({ozDrank: this.state.ozDrank + this.state.sliderState})}
                   />
