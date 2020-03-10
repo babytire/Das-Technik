@@ -6,6 +6,7 @@ import {
     TextInput,
     Button,
     StyleSheet,
+    Slider,
  } from 'react-native';
 
 export default class WaterAddButton extends Component {
@@ -14,6 +15,7 @@ export default class WaterAddButton extends Component {
 
     this.state = {
        ozDrank: 0,
+       sliderState: 8,
     };
   }
 
@@ -35,10 +37,18 @@ export default class WaterAddButton extends Component {
               </View>
 
               <View style={styles.button}>
+                <Slider
+                  minimumValue = {1}
+                  maximumValue = {32}
+                  value = {8}
+                  step = {1}
+                  onValueChange={(sliderValue) =>
+                    this.setState({sliderState: sliderValue})}
+                />
                 <Button
                     title="Add Glass"
                     onPress={() =>
-                      this.setState({ozDrank: this.state.ozDrank + 8})}
+                      this.setState({ozDrank: this.state.ozDrank + this.state.sliderState})}
                   />
                 </View>
             </View>
