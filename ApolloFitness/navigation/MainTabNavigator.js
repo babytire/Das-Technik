@@ -1,57 +1,65 @@
-import React from 'react';
-import { Platform, Image } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import React from "react";
+import { Platform, Image } from "react-native";
+import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import WaterScreen from '../screens/WaterScreen';
-import FoodScreen from '../screens/FoodScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import { NavigationEvents } from 'react-navigation';
+import TabBarIcon from "../components/TabBarIcon";
+import HomeScreen from "../screens/HomeScreen";
+import WaterScreen from "../screens/WaterScreen";
+import FoodScreen from "../screens/FoodScreen";
 
 const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
+  web: { headerMode: "screen" },
+  default: {}
 });
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: HomeScreen
   },
   config
 );
 
 HomeStack.navigationOptions = {
-  tabBarIcon:
-    <TabBarIcon name={Platform.OS === 'ios' ? 'ios-home': 'md-home'}/>,
+  tabBarIcon: (
+    <TabBarIcon name={Platform.OS === "ios" ? "ios-home" : "md-home"} />
+  )
 };
 
-HomeStack.path = '';
+HomeStack.path = "";
 
 const WaterStack = createStackNavigator(
   {
-    Water: WaterScreen,
+    Water: WaterScreen
   },
   config
 );
 
 WaterStack.navigationOptions = {
-  tabBarIcon: 
-    <Image style={{ width: 35, height: 35 }} source={require('../assets/images/drinkTabBar.png')}/>,
+  tabBarIcon: (
+    <Image
+      style={{ width: 35, height: 35 }}
+      source={require("../assets/images/drinkTabBar.png")}
+    />
+  )
 };
 
-WaterStack.path = '';
+WaterStack.path = "";
 
 const FoodStack = createStackNavigator(
   {
-    Food: FoodScreen,
+    Food: FoodScreen
   },
   config
 );
 
 FoodStack.navigationOptions = {
-  tabBarIcon: <Image style={{ width: 25, height: 25 }} source={require('../assets/images/eatTabBar.png')}/>,
+  tabBarIcon: (
+    <Image
+      style={{ width: 25, height: 25 }}
+      source={require("../assets/images/eatTabBar.png")}
+    />
+  )
 };
 
 const ProfileStack = createStackNavigator(
@@ -76,8 +84,9 @@ const tabNavigator = createBottomTabNavigator({
     showLabel: false,
     activeBackgroundColor: 'gray'
   }
-});
+}
+);
 
-tabNavigator.path = '';
+tabNavigator.path = "";
 
 export default tabNavigator;

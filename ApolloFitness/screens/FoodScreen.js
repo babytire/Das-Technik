@@ -25,9 +25,5 @@ export default class FoodScreen extends Component {
         />
       </View>
     );
-  }
+  };
 }
-
-const styles = StyleSheet.create({
-  // Empty for now
-});
