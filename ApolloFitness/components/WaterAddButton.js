@@ -1,13 +1,31 @@
+<<<<<<< HEAD
 import * as Progress from "react-native-progress";
 import React, { Component } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+=======
+import * as Progress from 'react-native-progress';
+import React, { Component } from 'react';
+import {
+    View,
+    Text,
+    TextInput,
+    Button,
+    StyleSheet,
+    Slider,
+ } from 'react-native';
+>>>>>>> add basic slider functionality
 
 export default class WaterAddButton extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       ozDrank: 0
+=======
+       ozDrank: 0,
+       sliderState: 8,
+>>>>>>> add basic slider functionality
     };
   }
 
@@ -57,10 +75,18 @@ export default class WaterAddButton extends Component {
               </View>
 
               <View style={styles.button}>
+                <Slider
+                  minimumValue = {1}
+                  maximumValue = {32}
+                  value = {8}
+                  step = {1}
+                  onValueChange={(sliderValue) =>
+                    this.setState({sliderState: sliderValue})}
+                />
                 <Button
                     title="Add Glass"
                     onPress={() =>
-                      this.setState({ozDrank: this.state.ozDrank + 8})}
+                      this.setState({ozDrank: this.state.ozDrank + this.state.sliderState})}
                   />
                 </View>
             </View>
