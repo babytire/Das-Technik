@@ -37,7 +37,8 @@ export default class WaterAddButton extends Component {
               <View style={styles.button}>
                 <Button
                     title="Add Glass"
-                    onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
+                    onPress={() =>
+                      this.setState({ozDrank: this.state.ozDrank + 8})}
                   />
                 </View>
             </View>
@@ -47,23 +48,27 @@ export default class WaterAddButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    flex: 0.3,
+    flex: 1,
     justifyContent: 'flex-end',
     marginBottom: 36
   },
 
   items: {
-    flexDirection: 'row',
-    alignItems: 'baseline'
+    flex: 10,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
     },
 
   progressBar: {
     transform: [{ rotate: '270deg'}],
+    marginLeft: -30,
   },
 
   text: {
     color: 'blue',
     fontWeight: 'bold',
-    fontSize: 48
+    fontSize: 48,
+    marginTop: 85,
+    marginLeft: 40
   }
 });
