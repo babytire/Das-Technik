@@ -7,6 +7,7 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import WaterScreen from "../screens/WaterScreen";
 import FoodScreen from "../screens/FoodScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -64,27 +65,30 @@ FoodStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
-    Profile: ProfileScreen,
+    Profile: ProfileScreen
   },
   config
 );
 
 ProfileStack.navigationOptions = {
-  tabBarIcon:
-    <TabBarIcon name = {Platform.OS === 'ios' ? 'ios-settings' : 'md-settings'}/>
+  tabBarIcon: (
+    <TabBarIcon name={Platform.OS === "ios" ? "ios-settings" : "md-settings"} />
+  )
 };
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  WaterStack,
-  FoodStack,
-  ProfileStack,
-}, {
-  tabBarOptions: {
-    showLabel: false,
-    activeBackgroundColor: 'gray'
+const tabNavigator = createBottomTabNavigator(
+  {
+    HomeStack,
+    WaterStack,
+    FoodStack,
+    ProfileStack
+  },
+  {
+    tabBarOptions: {
+      showLabel: false,
+      activeBackgroundColor: "gray"
+    }
   }
-}
 );
 
 tabNavigator.path = "";
