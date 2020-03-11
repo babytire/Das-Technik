@@ -6,9 +6,9 @@ export default class InputQuery extends Component {
         return (
             <View style={{
                 flexDirection: 'row', 
-                flex: 1,
+                flex: 1, 
             }}>
-                <Text style={this.props.style}>{this.props.name + ': '}</Text>
+                <Text>{this.props.name + ': '}</Text>
                 <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}></TextInput>
             </View>
         );

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+  Button,
 } from 'react-native';
 import InputQuery from '../components/InputQuery';
+import Table, { Section, BioCell, StaticCell, TouchableCell } from 'react-native-js-tableview';
 
 export default class FoodScreen extends Component {
 
   constructor(props) {
     super(props);
-
+    
     this.state = {
       totalCal: 0,
       totalFat: 0,
@@ -20,45 +22,7 @@ export default class FoodScreen extends Component {
       entryFat: 0,
       entryCarbs: 0,
       entryProt: 0,
-
-      selectedIndex: 2,
-      
-      moods: [0, 0, 0, 0, 0],
-      currentMood: 2,
     }
-
-    this.averageMood = this.averageMood.bind(this)
-    this.updateIndex = this.updateIndex.bind(this)
-  }
-
-  averageMood() {
-    var sum = 0
-    var avg = 2
-    var arr = this.state.moods
-    
-    arr.forEach(val => sum += val)
-    avg = sum / moodOptions
-    console.log(avg)
-
-    var diff = new Array(moodOptions)
-
-    for (var i = 0; i < moodOptions; i++) {
-      diff[i] = avg - arr[i]
-    }
-    var low = diff[0]
-    var index = 0
-    for (var j = 1; j < moodOptions; j++) {
-      if (diff[j] < low) {
-        low = diff[j]
-        index = j
-      }
-    }
-
-    this.setState({currentMood: index})
-  }
-
-  updateIndex (selectedIndex) {
-    this.setState({selectedIndex})
   }
 
   _onAddFood = () => {
@@ -66,12 +30,6 @@ export default class FoodScreen extends Component {
     this.setState({totalFat: this.state.totalFat + this.state.entryFat})
     this.setState({totalCarbs: this.state.totalCarbs + this.state.entryCarbs})
     this.setState({totalProt: this.state.totalProt + this.state.entryProt})
-
-    var arr = this.state.moods
-    arr[this.state.selectedIndex] += 1
-    this.setState({moods: arr})
-
-    this.averageMood()
   }
 
   render = () => {
@@ -79,17 +37,30 @@ export default class FoodScreen extends Component {
     const { selectedIndex } = this.state
 
     return (
-      <View style={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <InputQuery name='Name' placeholder="Enter name here"/>
-        <InputQuery name='Calories' placeholder="Enter calories here"/>
-        <InputQuery name='Fat' placeholder="Enter fat here"/>
-        <InputQuery name='Carbohydrates' placeholder="Enter carbohydrates here"/>
-        <InputQuery name='Protein' placeholder="Enter protein here"/>
-      </View>
+      <>
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <InputQuery name='Name' placeholder="Enter name here"/>
+          <InputQuery name='Calories' placeholder="Enter calories here" onChangeText={(text) => this.setState({entryCal: parseInt(text)})}/>
+          <InputQuery name='Fat' placeholder="Enter fat here" onChangeText={(text) => this.setState({entryFat: parseInt(text)})}/>
+          <InputQuery name='Carbohydrates' placeholder="Enter carbohydrates here" onChangeText={(text) => this.setState({entryCarbs: parseInt(text)})}/>
+          <InputQuery name='Protein' placeholder="Enter protein here" onChangeText={(text) => this.setState({entryProt: parseInt(text)})}/>
+          <Button title="Add Food" onPress={this._onAddFood} />
+        </View>
+
+        <Table style={styles.container} accentColor="#4DB6AC" scrollable={true}>
+          <Section header="Food Intake Rundown">
+            <StaticCell title={this.state.totalCal} subtitle="Calories" accessory="details" />
+            <StaticCell title={this.state.totalFat} subtitle="Fat" accessory="details" />
+            <StaticCell title={this.state.totalCarbs} subtitle="Carbohydrates" accessory="details" />
+            <StaticCell title={this.state.totalProt} subtitle="Protein" accessory="details" />
+          </Section>
+        </Table>
+      </>
     );
   };
 }
