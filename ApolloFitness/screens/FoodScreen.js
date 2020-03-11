@@ -16,7 +16,6 @@ export default class FoodScreen extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       totalCal: 0,
       totalFat: 0,
