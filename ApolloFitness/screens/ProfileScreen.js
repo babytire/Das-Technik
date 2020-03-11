@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
-    Text,
-    View
+    View,
+    Text
 } from 'react-native'
+import EditProfileButton from '../components/EditProfileButton'
+import HealthDisclaimerButton from '../components/HealthDisclaimerButton'
 
-export default function ProfileScreen() {
-    return (
-        <View style = {styles.container}>
-            <Text>
-                Profile contents go here
-            </Text>
-        </View>
-    );
+export default class ProfileScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: 'User'
+        }
+    }
+
+    render() {
+        return (
+            <View style = {styles.container}>
+                <Text style = {styles.title}>
+                    Welcome, {this.state.userName}!
+                </Text>     
+                <EditProfileButton/>
+                <HealthDisclaimerButton/>
+            </View> 
+
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-    //blank for now
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        margin: 20,
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 30,
+        margin: 100
+    },
 });
