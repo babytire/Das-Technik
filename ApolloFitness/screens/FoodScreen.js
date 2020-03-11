@@ -51,10 +51,10 @@ export default class FoodScreen extends Component {
 
         <Table style={styles.container} accentColor="#4DB6AC" scrollable={true}>
           <Section header="Food Intake Rundown">
-            <StaticCell title={this.state.totalCal} subtitle="Calories" accessory="details" />
-            <StaticCell title={this.state.totalFat} subtitle="Fat" accessory="details" />
-            <StaticCell title={this.state.totalCarbs} subtitle="Carbohydrates" accessory="details" />
-            <StaticCell title={this.state.totalProt} subtitle="Protein" accessory="details" />
+            <StaticCell title={this.state.totalCal + " kcal"} subtitle="Calories" accessory="details" />
+            <StaticCell title={this.state.totalFat + "g"} subtitle="Fat" accessory="details" />
+            <StaticCell title={this.state.totalCarbs + "g"} subtitle="Carbohydrates" accessory="details" />
+            <StaticCell title={this.state.totalProt + "g"} subtitle="Protein" accessory="details" />
           </Section>
         </Table>
       </>
