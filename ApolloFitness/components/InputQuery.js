@@ -13,7 +13,7 @@ export default class InputQuery extends Component {
                 flex: 1, 
             }}>
                 <Text>{this.props.name + ': '}</Text>
-                <TextInput placeholder={this.props.placeholder}></TextInput>
+                <TextInput placeholder={this.props.placeholder} onChangeText={this.props.onChangeText}></TextInput>
             </View>
         );
     }
