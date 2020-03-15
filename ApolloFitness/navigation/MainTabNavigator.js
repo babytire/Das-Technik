@@ -7,8 +7,9 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import WaterScreen from '../screens/WaterScreen';
 import FoodScreen from '../screens/FoodScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import SettingScreen from '../screens/SettingScreen';
 import { NavigationEvents } from 'react-navigation';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -56,6 +57,7 @@ FoodStack.navigationOptions = {
 
 const ProfileStack = createStackNavigator(
   {
+    Setting: SettingScreen,
     Profile: ProfileScreen,
   },
   config
