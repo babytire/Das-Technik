@@ -1,4 +1,5 @@
 node-modules/
+node_modules/
 .expo/*
 npm-debug.*
 yarn.lock
