@@ -3,13 +3,13 @@ import { Platform, Image } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import WaterScreen from '../screens/WaterScreen';
-import FoodScreen from '../screens/FoodScreen';
-import SettingScreen from '../screens/SettingScreen';
-import { NavigationEvents } from 'react-navigation';
-import ProfileScreen from '../screens/ProfileScreen';
+import { NavigationEvents } from "react-navigation";
+import TabBarIcon from "../components/TabBarIcon";
+import HomeScreen from "../screens/HomeScreen";
+import WaterScreen from "../screens/WaterScreen";
+import FoodScreen from "../screens/FoodScreen";
+import SettingScreen from "../screens/SettingScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -68,7 +68,7 @@ FoodStack.navigationOptions = {
 const ProfileStack = createStackNavigator(
   {
     Setting: SettingScreen,
-    Profile: ProfileScreen,
+    Profile: ProfileScreen
   },
   config
 );
