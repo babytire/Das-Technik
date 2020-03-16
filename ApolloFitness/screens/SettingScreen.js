@@ -4,22 +4,37 @@ import {
     View,
     Text,
     TouchableOpacity,
+    AsyncStorage
 } from 'react-native'
+import ProfileScreen from '../screens/ProfileScreen'
 import HealthDisclaimerButton from '../components/HealthDisclaimerButton'
-import ProfileScreen from '../screens/ProfileScreen';
-
 
 export default class SettingScreen extends Component {
+    constructor() {
+        super()
+        this.state = {
+            userName: '',
+        }
+    }
+
+    componentDidMount() {
+        this._loadData()
+    }
+
+    setFun() {
+        this._loadData()
+    }
+
     render() {
         return (
             <View style = {styles.container}>
                 <Text style = {styles.title}>
-                    Welcome, {'User'}!
+                    Welcome, {this.state.userName}!
                 </Text>     
                 <TouchableOpacity
                     style={styles.button}
-                    //onPress={() => alert('Take me somewhere')}
-                    onPress = {() => this.props.navigation.navigate('Profile')}
+                    onPress = {() => this.props.navigation.navigate('Profile',
+                    {callSet:this.setFun.bind(this)})}
                 >
                     <Text> Edit Profile </Text>
                 </TouchableOpacity>
@@ -27,6 +42,17 @@ export default class SettingScreen extends Component {
             </View> 
 
         );
+    }
+    _loadData = async() => {
+        try {
+            const name = await AsyncStorage.getItem('user')
+            if (name != null) {
+                this.setState({userName: name})
+            }
+          } catch(e) {
+            console.log('Catch')
+            // read error
+          }
     }
 }
 
