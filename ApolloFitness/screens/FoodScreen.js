@@ -7,6 +7,7 @@ import {
 import InputQuery from '../components/InputQuery';
 import Table, { Section, BioCell, StaticCell, TouchableCell } from 'react-native-js-tableview';
 
+
 export default class FoodScreen extends Component {
 
   constructor(props) {
@@ -59,7 +60,7 @@ export default class FoodScreen extends Component {
         </Table>
       </>
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({

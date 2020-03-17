@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import { 
-    View,
-    Text,
-    TextInput,
- } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, TextInput } from "react-native";
 
 export default class InputQuery extends Component {
     render = () => {
@@ -18,3 +14,4 @@ export default class InputQuery extends Component {
         );
     }
 }
+
