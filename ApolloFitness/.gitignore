@@ -1,6 +1,8 @@
-node_modules/**/*
+node-modules/
+node_modules/
 .expo/*
 npm-debug.*
+yarn.lock
 *.jks
 *.p8
 *.p12
@@ -9,6 +11,8 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+package-lock.json
 
 # macOS
 .DS_Store
+
