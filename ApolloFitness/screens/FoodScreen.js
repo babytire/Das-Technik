@@ -8,6 +8,7 @@ import { Button, ButtonGroup, Avatar } from 'react-native-elements';
 import InputQuery from '../components/InputQuery';
 import Table, { Section, StaticCell } from 'react-native-js-tableview';
 import { StatusBar } from 'react-native';
+import { Dimensions } from 'react-native';
 
 const moodOptions = 5
 
@@ -94,22 +95,27 @@ export default class FoodScreen extends Component {
           flex: 1,
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          backgroundColor: '#1F1F1F',
         }}>
-          <InputQuery name='Name' placeholder="Enter name here"/>
-          <InputQuery name='Calories' placeholder="Enter calories here" onChangeText={(text) => this.setState({entryCal: parseInt(text)})}/>
-          <InputQuery name='Fat' placeholder="Enter fat here" onChangeText={(text) => this.setState({entryFat: parseInt(text)})}/>
-          <InputQuery name='Carbohydrates' placeholder="Enter carbohydrates here" onChangeText={(text) => this.setState({entryCarbs: parseInt(text)})}/>
-          <InputQuery name='Protein' placeholder="Enter protein here" onChangeText={(text) => this.setState({entryProt: parseInt(text)})}/>
+          <InputQuery style={{color:'white'}} name='Name' placeholder="Enter name here"/>
+          <InputQuery style={{color:'white'}} name='Calories' placeholder="Enter calories here" onChangeText={(text) => this.setState({entryCal: parseInt(text)})}/>
+          <InputQuery style={{color:'white'}} name='Fat' placeholder="Enter fat here" onChangeText={(text) => this.setState({entryFat: parseInt(text)})}/>
+          <InputQuery style={{color:'white'}} name='Carbohydrates' placeholder="Enter carbohydrates here" onChangeText={(text) => this.setState({entryCarbs: parseInt(text)})}/>
+          <InputQuery style={{color:'white'}} name='Protein' placeholder="Enter protein here" onChangeText={(text) => this.setState({entryProt: parseInt(text)})}/>
         </View>
-
-        <Button title="Add Food" onPress={this._onAddFood} />
-        <ButtonGroup
-          style={{flex: 1}}
-          onPress={this.updateIndex}
-          selectedIndex={selectedIndex}
-          buttons={buttons}
-        />
+        <View style={{
+          flex: 0,
+          backgroundColor: '#1F1F1F',
+        }}>
+          <Button title="Add Food" onPress={this._onAddFood} />
+          <ButtonGroup
+            containerStyle={{backgroundColor: '#333333'}}
+            onPress={this.updateIndex}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+          />
+        </View>
 
         <View style={{
           flex: 4,
@@ -146,4 +152,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		marginBottom: 30,
   },
+  lightFont: {
+    color: 'white'
+  }
+
+  // Dark mode: #1F1F1F
 });
