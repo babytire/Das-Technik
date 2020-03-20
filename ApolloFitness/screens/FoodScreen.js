@@ -8,6 +8,7 @@ import { Button, ButtonGroup, Avatar } from 'react-native-elements';
 import InputQuery from '../components/InputQuery';
 import Table, { Section, StaticCell } from 'react-native-js-tableview';
 import { StatusBar } from 'react-native';
+import { Dimensions } from 'react-native';
 
 const moodOptions = 5
 
