@@ -11,8 +11,9 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
-import { Button, ButtonGroup } from 'react-native-elements';
+import { Button, ButtonGroup, Avatar } from 'react-native-elements';
 import InputQuery from '../components/InputQuery';
 import Table, { Section, StaticCell } from 'react-native-js-tableview';
 import { StatusBar } from 'react-native';
@@ -157,7 +158,7 @@ export default class FoodScreen extends Component {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <InputQuery style={styles.textInput} name='Name' placeholder="Enter name here"/>
+          <InputQuery name='Name' placeholder="Enter name here"/>
           <InputQuery name='Calories' placeholder="Enter calories here" onChangeText={(text) => this.setState({entryCal: parseInt(text)})}/>
           <InputQuery name='Fat' placeholder="Enter fat here" onChangeText={(text) => this.setState({entryFat: parseInt(text)})}/>
           <InputQuery name='Carbohydrates' placeholder="Enter carbohydrates here" onChangeText={(text) => this.setState({entryCarbs: parseInt(text)})}/>
@@ -172,17 +173,31 @@ export default class FoodScreen extends Component {
           buttons={buttons}
         />
 
-        <Table style={styles.container} theme="dark" accentColor="gold" scrollable={true}>
-          <Section header="Food Intake Rundown">
-            <StaticCell title={this.state.totalCal + " kcal"} subtitle="Calories" accessory="details" />
-            <StaticCell title={this.state.totalFat + "g"} subtitle="Fat" accessory="details" />
-            <StaticCell title={this.state.totalCarbs + "g"} subtitle="Carbohydrates" accessory="details" />
-            <StaticCell title={this.state.totalProt + "g"} subtitle="Protein" accessory="details" />
-          </Section>
-          <Section>
-            <StaticCell title={buttons[this.state.currentMood]}/>
-          </Section>
-        </Table>
+        <View style={{
+          flex: 4,
+        }}>
+          <Table style={styles.container} theme="dark" accentColor="gold" scrollable={true}>
+            <Section header="Food Intake Rundown">
+              <StaticCell title={this.state.totalCal + " kcal"} subtitle="Calories" accessory="details" />
+              <StaticCell title={this.state.totalFat + "g"} subtitle="Fat" accessory="details" />
+              <StaticCell title={this.state.totalCarbs + "g"} subtitle="Carbohydrates" accessory="details" />
+              <StaticCell title={this.state.totalProt + "g"} subtitle="Protein" accessory="details" />
+            </Section>
+
+            <View style={{
+              flex: 1,
+              alignItems: 'center',
+            }}>
+              <Avatar
+                size="large"
+                rounded
+                title={buttons[this.state.currentMood]}
+                overlayContainerStyle={{backgroundColor: 'dark'}}
+              />
+              <Text style={{fontSize: 20, color: 'white'}}>Average Mood</Text>
+            </View>
+          </Table>
+        </View>
       </>
     );
   };
@@ -192,5 +207,5 @@ const styles = StyleSheet.create({
   container: {
 		flex: 1,
 		marginBottom: 30,
-	},
+  },
 });
