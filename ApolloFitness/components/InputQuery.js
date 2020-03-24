@@ -14,3 +14,4 @@ export default class InputQuery extends Component {
         );
     }
 }
+

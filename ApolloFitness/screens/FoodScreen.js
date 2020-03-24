@@ -135,7 +135,7 @@ export default class FoodScreen extends Component {
                 size="large"
                 rounded
                 title={buttons[this.state.currentMood]}
-                overlayContainerStyle={{backgroundColor: 'dark'}}
+                overlayContainerStyle={{backgroundColor: '#1F1F1F'}}
               />
               <Text style={{fontSize: 20, color: 'white'}}>Average Mood</Text>
             </View>
