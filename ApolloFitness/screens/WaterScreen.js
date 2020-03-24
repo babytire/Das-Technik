@@ -3,65 +3,55 @@ import { StyleSheet, AsyncStorage, TouchableOpacity } from "react-native";
 import WaterAddButton from "../components/WaterAddButton";
 
 export default class WaterScreen extends React.Component {
-    constructor(props) {
-	     super(props);
-    }
- 
-	saveWater = (date, water) => {
-		alert('entered')
-		this.setWaterStorage(date, water)
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	getWater = (date) => {
-		alert("entered")
-		this.getWaterStorage(date)
-		
-	}
+  saveWater = (date, water) => {
+    alert("entered");
+    this.setWaterStorage(date, water);
+  };
 
-	reomveWater = (date) => {
-		this.removeWaterStorage(date)
-	}
+  getWater = date => {
+    alert("entered");
+    this.getWaterStorage(date);
+  };
 
-	//this.setState({ozDrank: this.state.ozDrank + 8})}
+  reomveWater = date => {
+    this.removeWaterStorage(date);
+  };
 
+  // this.setState({ozDrank: this.state.ozDrank + 8})}
 
-    render() {
-	return (
-    	<View style={styles.bottom}>
-      	  <Text>
-		{this.state.ozDrank} oz
-      	  </Text>
-	  <Button
-            title="Press me"
-            onPress={() => this.setState({ozDrank: this.state.ozDrank + 8})}
-          />
+  render() {
+    return (
+      <View style={styles.bottom}>
+        <Text>{this.state.ozDrank} oz</Text>
+        <Button
+          title="Press me"
+          onPress={() => this.setState({ ozDrank: this.state.ozDrank + 8 })}
+        />
 
+        <Button
+          title="Save me"
+          onPress={() => this.saveWater("11/11/11", this.state.ozDrank)}
+        />
+        <Button title="Show me" onPress={() => this.getWater("11/11/11")} />
 
+        <TouchableOpacity onPress={this.saveWater("11/11/11", "15 Oz")}>
+          <Text> Click to Save</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.getWater("11/11/11")}>
+          <Text> Click to pull</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.removeWaterStorage("11/11/11")}>
+          <Text> Click to Remove</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
-          <Button
-	    title="Save me"
-	    onPress={() => this.saveWater('11/11/11', this.state.ozDrank)}
-          />
-	  <Button
-            title="Show me"
-            onPress={() => this.getWater('11/11/11')}
-          />
-
-	  <TouchableOpacity onPress = {this.saveWater('11/11/11', '15 Oz')}>
-		<Text> Click to Save</Text>
-	  </TouchableOpacity>
-	  <TouchableOpacity onPress = {this.getWater('11/11/11')}>
-                <Text> Click to pull</Text>
-          </TouchableOpacity>
-	  <TouchableOpacity onPress = {this.removeWaterStorage('11/11/11')}>
-                <Text> Click to Remove</Text>
-          </TouchableOpacity>
-	
-        </View>
-       );
-   }
-  
-  //Saves stored water data
+  // Saves stored water data
   setWaterStorage = async (date, water) => {
     try {
       await AsyncStorage.setItem(date, water);
