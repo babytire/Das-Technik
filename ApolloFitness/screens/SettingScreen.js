@@ -13,7 +13,7 @@ export default class SettingScreen extends Component {
   constructor() {
     super();
     this.state = {
-      userName: ""
+      userName: "User"
     };
   }
 

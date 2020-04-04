@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity,
+  Picker,
   AsyncStorage
 } from "react-native";
 
@@ -12,10 +13,15 @@ export default class ProfileScreen extends Component {
   constructor() {
     super();
     this.state = {
-      user: "",
-      age: ""
+      user: "User",
+      age: "Age",
+      weight: "Weight",
+      feet: "Feet",
+      inch: "Inches",
+      goal: "WL",
     };
   }
+  
 
   // update placeholders with current data
   componentDidMount() {
@@ -34,16 +40,49 @@ export default class ProfileScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+
+        <Text style = {{fontSize: 40, textAlign: 'center'}}>Welcome to Apollo Fitness</Text>
+
         <TextInput
           style={styles.inputs}
           placeholder={this.state.userName}
           onChangeText={text => this.setState({ userName: text })}
         />
+
         <TextInput
           style={styles.inputs}
           placeholder={this.state.age}
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
+
+        <TextInput
+          style={styles.inputs}
+          placeholder={this.state.weight}
+          onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
+        />
+
+        <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
+          <TextInput
+            style={styles.inputs}
+            placeholder={this.state.feet}
+            onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
+          />
+            <TextInput
+            style={styles.inputs}
+            placeholder={this.state.inch}
+            onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
+          />
+        </View>
+
+        <Picker
+          style = {{width: 250}}
+          selectedValue = {this.state.goal}
+          onValueChange={(itemValue, itemIndex) => this.setState({ goal: itemValue })}>
+          <Picker.Item label = "Weight Loss" value = "WL"/>
+          <Picker.Item label = "Maintain Weight" value = "MW"/>
+          <Picker.Item label = "Weight Gain" value = "WG"/>
+        </Picker>
+
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.updateFields()}
@@ -58,6 +97,10 @@ export default class ProfileScreen extends Component {
   updateFields() {
     this._saveData("user", this.state.userName);
     this._saveData("age", this.state.age);
+    this._saveData("weight", this.state.weight);
+    this._saveData("feet", this.state.feet);
+    this._saveData("inch", this.state.inch);
+    this._saveData("goal", this.state.goal);
     alert("Data saved!");
   }
 
@@ -81,6 +124,22 @@ export default class ProfileScreen extends Component {
       if (age != null) {
         this.setState({ age });
       }
+      const weight = await AsyncStorage.getItem("weight");
+      if (weight != null) {
+        this.setState({ weight });
+      }
+      const feet = await AsyncStorage.getItem("feet");
+      if (feet != null) {
+        this.setState({ feet });
+      }
+      const inch = await AsyncStorage.getItem("inch");
+      if (inch != null) {
+        this.setState({ inch });
+      }
+      const goal = await AsyncStorage.getItem("goal");
+      if (goal != null) {
+        this.setState({ goal });
+      }
     } catch (e) {
       console.log("Catch");
       // read error
@@ -93,20 +152,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 25,
     justifyContent: "center",
-    alignItems: "stretch"
+    alignItems: "center"
   },
   inputs: {
     height: 40,
+    width: 150,
     fontSize: 30,
     textAlign: "center",
-    margin: 20,
+    margin: 10,
     borderBottomWidth: 1,
     borderBottomColor: "black"
   },
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    padding: 15,
-    margin: 10
+    padding: 20,
   }
 });
