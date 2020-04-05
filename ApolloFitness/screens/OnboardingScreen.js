@@ -9,7 +9,7 @@ import {
   AsyncStorage
 } from "react-native";
 
-export default class ProfileScreen extends Component {
+export default class OnboardingScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,52 +21,40 @@ export default class ProfileScreen extends Component {
       goal: "WL",
     };
   }
-  
-  // update placeholders with current data
-  componentDidMount() {
-    this._loadData();
-  }
 
-  // remount settingScreen on return
-  componentWillUnmount() {
-    const { params } = this.props.navigation.state;
-    params.callSet();
-  }
-
-  // userName field
-  // age field
-  // save button
   render() {
     return (
       <View style={styles.container}>
 
+        <Text style = {{fontSize: 40, textAlign: 'center'}}>Welcome to Apollo Fitness</Text>
+
         <TextInput
           style={styles.inputs}
-          placeholder={this.state.userName}
+          placeholder={"Your name"}
           onChangeText={text => this.setState({ userName: text })}
         />
 
         <TextInput
           style={styles.inputs}
-          placeholder={this.state.age}
+          placeholder={"Age"}
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
 
         <TextInput
           style={styles.inputs}
-          placeholder={this.state.weight}
+          placeholder={"Weight"}
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
         <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
           <TextInput
             style={styles.inputs}
-            placeholder={this.state.feet}
+            placeholder={"Feet"}
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
             <TextInput
             style={styles.inputs}
-            placeholder={this.state.inch}
+            placeholder={"Inches"}
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
           />
         </View>
@@ -83,13 +71,13 @@ export default class ProfileScreen extends Component {
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.updateFields()}>
-          <Text> Save </Text>
+          <Text> Get Started </Text>
         </TouchableOpacity>
       </View>
     );
   }
 
-  // saves updated fields
+  // saves updated fields, logs first launch, redirect to app
   updateFields() {
     this._saveData("user", this.state.userName);
     this._saveData("age", this.state.age);
@@ -97,6 +85,8 @@ export default class ProfileScreen extends Component {
     this._saveData("feet", this.state.feet);
     this._saveData("inch", this.state.inch);
     this._saveData("goal", this.state.goal);
+    this._saveData("firstLaunch", "1")
+    this.props.navigation.navigate("Home")
   }
 
   // async function to save fields
@@ -105,39 +95,6 @@ export default class ProfileScreen extends Component {
       await AsyncStorage.setItem(key, value);
     } catch (e) {
       // save error
-    }
-  };
-
-  // pull data from async
-  _loadData = async () => {
-    try {
-      const name = await AsyncStorage.getItem("user");
-      if (name != null) {
-        this.setState({ userName: name });
-      }
-      const age = await AsyncStorage.getItem("age");
-      if (age != null) {
-        this.setState({ age });
-      }
-      const weight = await AsyncStorage.getItem("weight");
-      if (weight != null) {
-        this.setState({ weight });
-      }
-      const feet = await AsyncStorage.getItem("feet");
-      if (feet != null) {
-        this.setState({ feet });
-      }
-      const inch = await AsyncStorage.getItem("inch");
-      if (inch != null) {
-        this.setState({ inch });
-      }
-      const goal = await AsyncStorage.getItem("goal");
-      if (goal != null) {
-        this.setState({ goal });
-      }
-    } catch (e) {
-      console.log("Catch");
-      // read error
     }
   };
 }

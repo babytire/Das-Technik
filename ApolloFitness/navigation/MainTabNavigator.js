@@ -3,13 +3,13 @@ import { Platform, Image } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
-import { NavigationEvents } from "react-navigation";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import WaterScreen from "../screens/WaterScreen";
 import FoodScreen from "../screens/FoodScreen";
 import SettingScreen from "../screens/SettingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import OnboardingScreen from "../screens/OnboardingScreen"
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -18,7 +18,8 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
+    Home: HomeScreen,
+    Onboard: OnboardingScreen
   },
   config
 );
