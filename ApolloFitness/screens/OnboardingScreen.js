@@ -18,59 +18,64 @@ export default class OnboardingScreen extends Component {
       weight: "Weight",
       feet: "Feet",
       inch: "Inches",
-      goal: "WL",
+      goal: "WL"
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
-
-        <Text style = {{fontSize: 40, textAlign: 'center'}}>Welcome to Apollo Fitness</Text>
+        <Text style={{ fontSize: 40, textAlign: "center" }}>
+          Welcome to Apollo Fitness
+        </Text>
 
         <TextInput
           style={styles.inputs}
-          placeholder={"Your name"}
+          placeholder="Your name"
           onChangeText={text => this.setState({ userName: text })}
         />
 
         <TextInput
           style={styles.inputs}
-          placeholder={"Age"}
+          placeholder="Age"
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
 
         <TextInput
           style={styles.inputs}
-          placeholder={"Weight"}
+          placeholder="Weight"
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
-        <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TextInput
             style={styles.inputs}
-            placeholder={"Feet"}
+            placeholder="Feet"
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
-            <TextInput
+          <TextInput
             style={styles.inputs}
-            placeholder={"Inches"}
+            placeholder="Inches"
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
           />
         </View>
 
         <Picker
-          style = {{width: 250}}
-          selectedValue = {this.state.goal}
-          onValueChange={(itemValue, itemIndex) => this.setState({ goal: itemValue })}>
-          <Picker.Item label = "Weight Loss" value = "WL"/>
-          <Picker.Item label = "Maintain Weight" value = "MW"/>
-          <Picker.Item label = "Weight Gain" value = "WG"/>
+          style={{ width: 250 }}
+          selectedValue={this.state.goal}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ goal: itemValue })
+          }
+        >
+          <Picker.Item label="Weight Loss" value="WL" />
+          <Picker.Item label="Maintain Weight" value="MW" />
+          <Picker.Item label="Weight Gain" value="WG" />
         </Picker>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.updateFields()}>
+          onPress={() => this.updateFields()}
+        >
           <Text> Get Started </Text>
         </TouchableOpacity>
       </View>
@@ -85,8 +90,8 @@ export default class OnboardingScreen extends Component {
     this._saveData("feet", this.state.feet);
     this._saveData("inch", this.state.inch);
     this._saveData("goal", this.state.goal);
-    this._saveData("firstLaunch", "1")
-    this.props.navigation.navigate("Home")
+    this._saveData("firstLaunch", "1");
+    this.props.navigation.navigate("Home");
   }
 
   // async function to save fields
@@ -118,6 +123,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    padding: 20,
+    padding: 20
   }
 });

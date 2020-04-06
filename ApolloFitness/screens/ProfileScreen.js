@@ -18,10 +18,10 @@ export default class ProfileScreen extends Component {
       weight: "Weight",
       feet: "Feet",
       inch: "Inches",
-      goal: "WL",
+      goal: "WL"
     };
   }
-  
+
   // update placeholders with current data
   componentDidMount() {
     this._loadData();
@@ -39,7 +39,6 @@ export default class ProfileScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         <TextInput
           style={styles.inputs}
           placeholder={this.state.userName}
@@ -58,13 +57,13 @@ export default class ProfileScreen extends Component {
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
-        <View style = {{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <TextInput
             style={styles.inputs}
             placeholder={this.state.feet}
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
-            <TextInput
+          <TextInput
             style={styles.inputs}
             placeholder={this.state.inch}
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
@@ -72,17 +71,21 @@ export default class ProfileScreen extends Component {
         </View>
 
         <Picker
-          style = {{width: 250}}
-          selectedValue = {this.state.goal}
-          onValueChange={(itemValue, itemIndex) => this.setState({ goal: itemValue })}>
-          <Picker.Item label = "Weight Loss" value = "WL"/>
-          <Picker.Item label = "Maintain Weight" value = "MW"/>
-          <Picker.Item label = "Weight Gain" value = "WG"/>
+          style={{ width: 250 }}
+          selectedValue={this.state.goal}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ goal: itemValue })
+          }
+        >
+          <Picker.Item label="Weight Loss" value="WL" />
+          <Picker.Item label="Maintain Weight" value="MW" />
+          <Picker.Item label="Weight Gain" value="WG" />
         </Picker>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.updateFields()}>
+          onPress={() => this.updateFields()}
+        >
           <Text> Save </Text>
         </TouchableOpacity>
       </View>
@@ -161,6 +164,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    padding: 20,
+    padding: 20
   }
 });

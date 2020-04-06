@@ -9,7 +9,7 @@ import WaterScreen from "../screens/WaterScreen";
 import FoodScreen from "../screens/FoodScreen";
 import SettingScreen from "../screens/SettingScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import OnboardingScreen from "../screens/OnboardingScreen"
+import OnboardingScreen from "../screens/OnboardingScreen";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
