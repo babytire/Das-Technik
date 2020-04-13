@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, StatusBar } from "react-native";
-import { Button, ButtonGroup, Avatar } from "react-native-elements";
+import { Button, Avatar } from "react-native-elements";
 import Table, { Section, StaticCell } from "react-native-js-tableview";
 
 import InputQuery from "../components/InputQuery";
+import MoodTracker from "../components/MoodTracker";
 
 const moodOptions = 5;
 
@@ -21,23 +22,24 @@ export default class FoodScreen extends Component {
       entryCarbs: 0,
       entryProt: 0,
 
-      selectedIndex: 2,
-
       moods: [0, 0, 0, 0, 0],
-      currentMood: 2
+      currentMood: 2,
     };
 
+    this.updateIndex = this.updateIndex.bind(this); 
     this.averageMood = this.averageMood.bind(this);
-    this.updateIndex = this.updateIndex.bind(this);
+  }
+
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex });
   }
 
   averageMood() {
     let sum = 0;
-    let avg = 2;
-    const arr = this.state.moods;
+    var arr = this.state.moods;
 
     arr.forEach(val => (sum += val));
-    avg = sum / moodOptions;
+    let avg = sum / moodOptions;
     console.log(avg);
 
     const diff = new Array(moodOptions);
@@ -57,11 +59,7 @@ export default class FoodScreen extends Component {
     this.setState({ currentMood: index });
   }
 
-  updateIndex(selectedIndex) {
-    this.setState({ selectedIndex });
-  }
-
-  _onAddFood = () => {
+  onAddFood = () => {
     this.setState({ totalCal: this.state.totalCal + this.state.entryCal });
     this.setState({ totalFat: this.state.totalFat + this.state.entryFat });
     this.setState({
@@ -69,7 +67,7 @@ export default class FoodScreen extends Component {
     });
     this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
 
-    const arr = this.state.moods;
+    var arr = this.state.moods;
     arr[this.state.selectedIndex] += 1;
     this.setState({ moods: arr });
 
@@ -117,8 +115,7 @@ export default class FoodScreen extends Component {
   };
 
   render = () => {
-    const buttons = ["😀", "🤣", "😎", "😂", "😁"];
-    const { selectedIndex } = this.state;
+    const buttons = ["😀", "🙂", "😐", "🙁", "😞"];
 
     return (
       <>
@@ -169,13 +166,12 @@ export default class FoodScreen extends Component {
             backgroundColor: "#1F1F1F"
           }}
         >
-          <Button title="Add Food" onPress={this._onAddFood} />
-          <ButtonGroup
-            containerStyle={{ backgroundColor: "#333333" }}
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons}
-          />
+          <Button title="Add Food" onPress={this.onAddFood} />
+            <MoodTracker 
+              style={styles.moodSection} 
+              containerStyle={{ backgroundColor: "#333333" }}
+              onPress={this.updateIndex}
+            />
         </View>
 
         <View
@@ -237,6 +233,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 30
+  },
+  moodSection: {
+    flex: 0,
+    backgroundColor: "#1F1F1F"
   },
   lightFont: {
     color: "white"
