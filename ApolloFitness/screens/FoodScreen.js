@@ -73,46 +73,6 @@ export default class FoodScreen extends Component {
     this.averageMood();
   };
 
-  averageMood() {
-    let sum = 0;
-    var arr = this.state.moods;
-
-    arr.forEach(val => (sum += val));
-    let avg = sum / moodOptions;
-    console.log(avg);
-
-    const diff = new Array(moodOptions);
-
-    for (let i = 0; i < moodOptions; i++) {
-      diff[i] = avg - arr[i];
-    }
-    let low = diff[0];
-    let index = 0;
-    for (let j = 1; j < moodOptions; j++) {
-      if (diff[j] < low) {
-        low = diff[j];
-        index = j;
-      }
-    }
-
-    this.setState({ currentMood: index });
-  }
-
-  onAddFood = () => {
-    this.setState({ totalCal: this.state.totalCal + this.state.entryCal });
-    this.setState({ totalFat: this.state.totalFat + this.state.entryFat });
-    this.setState({
-      totalCarbs: this.state.totalCarbs + this.state.entryCarbs
-    });
-    this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
-
-    var arr = this.state.moods;
-    arr[this.state.selectedIndex] += 1;
-    this.setState({ moods: arr });
-
-    this.averageMood();
-  };
-
   render = () => {
     const buttons = ["😀", "🙂", "😐", "🙁", "😞"];
 
