@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
-import ProfileScreen from "./ProfileScreen";
 import HealthDisclaimerButton from "../components/HealthDisclaimerButton";
 
 export default class SettingScreen extends Component {
   constructor() {
     super();
     this.state = {
-      userName: ""
+      userName: "User"
     };
   }
 
@@ -28,7 +27,7 @@ export default class SettingScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome, {this.state.userName}!</Text>
+        <Text style={styles.title}>Hi, {this.state.userName}!</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
