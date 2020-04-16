@@ -130,29 +130,39 @@ export default class FoodScreen extends Component {
         >
           <InputQuery
             style={{ color: "white" }}
+            font={styles.lightFont}
+            inputFont={styles.lightFont}
             name="Name"
             placeholder="Enter name here"
           />
           <InputQuery
             style={{ color: "white" }}
+            font={styles.lightFont}
+            inputFont={styles.lightFont}
             name="Calories"
             placeholder="Enter calories here"
             onChangeText={text => this.setState({ entryCal: parseInt(text) })}
           />
           <InputQuery
             style={{ color: "white" }}
+            font={styles.lightFont}
+            inputFont={styles.lightFont}
             name="Fat"
             placeholder="Enter fat here"
             onChangeText={text => this.setState({ entryFat: parseInt(text) })}
           />
           <InputQuery
             style={{ color: "white" }}
+            font={styles.lightFont}
+            inputFont={styles.lightFont}
             name="Carbohydrates"
             placeholder="Enter carbohydrates here"
             onChangeText={text => this.setState({ entryCarbs: parseInt(text) })}
           />
           <InputQuery
             style={{ color: "white" }}
+            font={styles.lightFont}
+            inputFont={styles.lightFont}
             name="Protein"
             placeholder="Enter protein here"
             onChangeText={text => this.setState({ entryProt: parseInt(text) })}
