@@ -10,8 +10,9 @@ export default class InputQuery extends Component {
           flex: 1
         }}
       >
-        <Text>{`${this.props.name}: `}</Text>
+        <Text style={this.props.font}>{`${this.props.name}: `}</Text>
         <TextInput
+          style={this.props.inputFont}
           placeholder={this.props.placeholder}
           onChangeText={this.props.onChangeText}
         />
