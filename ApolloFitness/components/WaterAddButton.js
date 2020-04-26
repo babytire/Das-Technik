@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Slider
 } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class WaterAddButton extends Component {
   constructor(props) {
@@ -24,15 +24,15 @@ export default class WaterAddButton extends Component {
     return (
       <View style={styles.container}>
         <LinearGradient
-          colors={['#bdc3c7', '#2c3e50']}
+          colors={["#bdc3c7", "#2c3e50"]}
           style={styles.gradient}
         />
         <View style={styles.progressBar}>
           {/* Progress bar is out of 64 oz (8 glasses)
                      until goals are added in a later issue */}
           <Progress.Bar
-            style = {{ transform: [{rotate: '270deg'}]}}
-            color = 'black'
+            style={{ transform: [{ rotate: "270deg" }] }}
+            color="black"
             progress={this.state.ozDrank / 64}
             width={300}
             height={150}
@@ -53,7 +53,7 @@ export default class WaterAddButton extends Component {
             }
           />
           <Button
-            color = "white"
+            color="white"
             title={`Add ${this.state.sliderState} oz`}
             onPress={() =>
               this.setState({
@@ -69,28 +69,28 @@ export default class WaterAddButton extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   progressBar: {
     flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
   buttonSlider: {
     flex: 1,
-    alignItems: 'stretch',
+    alignItems: "stretch"
   },
   gradient: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    bottom: 0,
+    bottom: 0
   },
   title: {
     textAlign: "center",
-    color: 'white',
+    color: "white",
     fontSize: 50,
     margin: 25
-  },
+  }
 });

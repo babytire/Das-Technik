@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, AsyncStorage, View } from "react-native";
 import WaterAddButton from "../components/WaterAddButton";
 
-
 export default class WaterScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -25,11 +24,7 @@ export default class WaterScreen extends React.Component {
   };
 
   render() {
-    return (
-        
-        <WaterAddButton />
-
-    );
+    return <WaterAddButton />;
   }
 
   // Saves stored water data
@@ -73,6 +68,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 25,
     justifyContent: "center",
-    alignItems: "stretch",
-  },
+    alignItems: "stretch"
+  }
 });

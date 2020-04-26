@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, StatusBar, Button } from "react-native";
 import { Avatar } from "react-native-elements";
 import Table, { Section, StaticCell } from "react-native-js-tableview";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 import InputQuery from "../components/InputQuery";
 import MoodTracker from "../components/MoodTracker";
@@ -24,10 +24,10 @@ export default class FoodScreen extends Component {
       entryProt: 0,
 
       moods: [0, 0, 0, 0, 0],
-      currentMood: 2,
+      currentMood: 2
     };
 
-    this.updateIndex = this.updateIndex.bind(this); 
+    this.updateIndex = this.updateIndex.bind(this);
     this.averageMood = this.averageMood.bind(this);
   }
 
@@ -37,10 +37,10 @@ export default class FoodScreen extends Component {
 
   averageMood() {
     let sum = 0;
-    var arr = this.state.moods;
+    const arr = this.state.moods;
 
     arr.forEach(val => (sum += val));
-    let avg = sum / moodOptions;
+    const avg = sum / moodOptions;
 
     const diff = new Array(moodOptions);
 
@@ -67,7 +67,7 @@ export default class FoodScreen extends Component {
     });
     this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
 
-    var arr = this.state.moods;
+    const arr = this.state.moods;
     arr[this.state.selectedIndex] += 1;
     this.setState({ moods: arr });
 
@@ -76,10 +76,10 @@ export default class FoodScreen extends Component {
 
   averageMood() {
     let sum = 0;
-    var arr = this.state.moods;
+    const arr = this.state.moods;
 
     arr.forEach(val => (sum += val));
-    let avg = sum / moodOptions;
+    const avg = sum / moodOptions;
 
     const diff = new Array(moodOptions);
 
@@ -106,7 +106,7 @@ export default class FoodScreen extends Component {
     });
     this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
 
-    var arr = this.state.moods;
+    const arr = this.state.moods;
     arr[this.state.selectedIndex] += 1;
     this.setState({ moods: arr });
 
@@ -119,17 +119,17 @@ export default class FoodScreen extends Component {
     return (
       <>
         <LinearGradient
-          colors={['#bdc3c7', '#2c3e50']}
+          colors={["#bdc3c7", "#2c3e50"]}
           style={styles.gradient}
         />
         <StatusBar backgroundColor="black" barStyle="dark-content" />
-      
+
         <View
           style={{
             flex: 1,
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
           }}
         >
           <InputQuery
@@ -174,15 +174,15 @@ export default class FoodScreen extends Component {
         </View>
         <View
           style={{
-            flex: 0,
+            flex: 0
           }}
         >
-          <Button color = 'black' title="Add Food" onPress={this.onAddFood} />
-            <MoodTracker 
-              style={styles.moodSection} 
-              containerStyle={{ backgroundColor: "gray" }}
-              onPress={this.updateIndex}
-            />
+          <Button color="black" title="Add Food" onPress={this.onAddFood} />
+          <MoodTracker
+            style={styles.moodSection}
+            containerStyle={{ backgroundColor: "gray" }}
+            onPress={this.updateIndex}
+          />
         </View>
 
         <View
@@ -192,7 +192,7 @@ export default class FoodScreen extends Component {
         >
           <Table
             style={styles.container}
-            colorPalette ={ {background: 'tranparent'}}
+            colorPalette={{ background: "tranparent" }}
             scrollable
           >
             <Section header="Food Intake Rundown">
@@ -241,19 +241,19 @@ export default class FoodScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 30,
+    marginBottom: 30
   },
   moodSection: {
-    flex: 0,
+    flex: 0
   },
   lightFont: {
     color: "black"
   },
   gradient: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    bottom: 0,
-  },
+    bottom: 0
+  }
 });

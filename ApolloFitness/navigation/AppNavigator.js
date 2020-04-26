@@ -18,7 +18,7 @@ const AuthStack = createStackNavigator({ Onboarding: OnboardingScreen });
 class AuthLoadingScreen extends Component {
   constructor(props) {
     super(props);
-    //AsyncStorage.clear()
+    // AsyncStorage.clear()
     this._loadData();
   }
 

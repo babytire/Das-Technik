@@ -8,7 +8,7 @@ import {
   Picker,
   AsyncStorage
 } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class ProfileScreen extends Component {
   constructor() {
@@ -41,27 +41,27 @@ export default class ProfileScreen extends Component {
     return (
       <View style={styles.container}>
         <LinearGradient
-          colors={['#bdc3c7', '#2c3e50']}
+          colors={["#bdc3c7", "#2c3e50"]}
           style={styles.gradient}
         />
         <TextInput
           style={styles.inputs}
           placeholder={this.state.userName}
-          placeholderTextColor='black'
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ userName: text })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder={this.state.age}
-          placeholderTextColor='black'
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder={this.state.weight}
-          placeholderTextColor='black'
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
@@ -69,13 +69,13 @@ export default class ProfileScreen extends Component {
           <TextInput
             style={styles.inputs}
             placeholder={this.state.feet}
-            placeholderTextColor='black'
+            placeholderTextColor="black"
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
           <TextInput
             style={styles.inputs}
             placeholder={this.state.inch}
-            placeholderTextColor='black'
+            placeholderTextColor="black"
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
           />
         </View>
@@ -177,10 +177,10 @@ const styles = StyleSheet.create({
     margin: 10
   },
   gradient: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    bottom: 0,
-  },
+    bottom: 0
+  }
 });
