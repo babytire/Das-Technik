@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, StatusBar } from "react-native";
-import { Button, Avatar } from "react-native-elements";
+import { StyleSheet, View, Text, StatusBar, Button } from "react-native";
+import { Avatar } from "react-native-elements";
 import Table, { Section, StaticCell } from "react-native-js-tableview";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import InputQuery from "../components/InputQuery";
 import MoodTracker from "../components/MoodTracker";
@@ -117,26 +118,29 @@ export default class FoodScreen extends Component {
 
     return (
       <>
+        <LinearGradient
+          colors={['#bdc3c7', '#2c3e50']}
+          style={styles.gradient}
+        />
         <StatusBar backgroundColor="black" barStyle="dark-content" />
-
+      
         <View
           style={{
             flex: 1,
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#1F1F1F"
           }}
         >
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Name"
             placeholder="Enter name here"
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Calories"
@@ -144,7 +148,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryCal: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Fat"
@@ -152,7 +156,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryFat: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Carbohydrates"
@@ -160,7 +164,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryCarbs: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Protein"
@@ -171,13 +175,12 @@ export default class FoodScreen extends Component {
         <View
           style={{
             flex: 0,
-            backgroundColor: "#1F1F1F"
           }}
         >
-          <Button title="Add Food" onPress={this.onAddFood} />
+          <Button color = 'black' title="Add Food" onPress={this.onAddFood} />
             <MoodTracker 
               style={styles.moodSection} 
-              containerStyle={{ backgroundColor: "#333333" }}
+              containerStyle={{ backgroundColor: "gray" }}
               onPress={this.updateIndex}
             />
         </View>
@@ -189,8 +192,7 @@ export default class FoodScreen extends Component {
         >
           <Table
             style={styles.container}
-            theme="dark"
-            accentColor="gold"
+            colorPalette ={ {background: 'tranparent'}}
             scrollable
           >
             <Section header="Food Intake Rundown">
@@ -226,7 +228,6 @@ export default class FoodScreen extends Component {
                 size="large"
                 rounded
                 title={buttons[this.state.currentMood]}
-                overlayContainerStyle={{ backgroundColor: "#1F1F1F" }}
               />
               <Text style={{ fontSize: 20, color: "white" }}>Average Mood</Text>
             </View>
@@ -240,15 +241,19 @@ export default class FoodScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 30
+    marginBottom: 30,
   },
   moodSection: {
     flex: 0,
-    backgroundColor: "#1F1F1F"
   },
   lightFont: {
-    color: "white"
-  }
-
-  // Dark mode: #1F1F1F
+    color: "black"
+  },
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 });

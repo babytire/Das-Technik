@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Slider
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default class WaterAddButton extends Component {
   constructor(props) {
@@ -21,24 +22,28 @@ export default class WaterAddButton extends Component {
 
   render = () => {
     return (
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <View style={styles.items}>
+      <View style={styles.container}>
+        <LinearGradient
+          colors={['#bdc3c7', '#2c3e50']}
+          style={styles.gradient}
+        />
+        <View style={styles.progressBar}>
           {/* Progress bar is out of 64 oz (8 glasses)
                      until goals are added in a later issue */}
           <Progress.Bar
-            style={styles.progressBar}
+            style = {{ transform: [{rotate: '270deg'}]}}
+            color = 'black'
             progress={this.state.ozDrank / 64}
-            width={250}
-            height={100}
+            width={300}
+            height={150}
           />
-          <Text style={styles.text}>{this.state.ozDrank} oz</Text>
+          <Text style={styles.title}>{this.state.ozDrank} oz</Text>
         </View>
 
-        <View style={styles.button}>
+        <View style={styles.buttonSlider}>
           <Slider
-            style={{ marginBottom: 10 }}
-            thumbTintColor="blue"
-            minimumTrackTintColor="blue"
+            thumbTintColor="white"
+            minimumTrackTintColor="white"
             minimumValue={1}
             maximumValue={32}
             value={8}
@@ -48,6 +53,7 @@ export default class WaterAddButton extends Component {
             }
           />
           <Button
+            color = "white"
             title={`Add ${this.state.sliderState} oz`}
             onPress={() =>
               this.setState({
@@ -62,29 +68,29 @@ export default class WaterAddButton extends Component {
 }
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
     flex: 1,
-    justifyContent: "flex-end",
-    marginBottom: 36,
-    marginTop: 10
   },
-
-  items: {
-    flex: 10,
-    flexDirection: "column",
-    justifyContent: "flex-end"
-  },
-
   progressBar: {
-    transform: [{ rotate: "270deg" }],
-    marginLeft: -30
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-
-  text: {
-    color: "blue",
-    fontWeight: "bold",
-    fontSize: 48,
-    marginTop: 85,
-    marginLeft: 40
-  }
+  buttonSlider: {
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+  title: {
+    textAlign: "center",
+    color: 'white',
+    fontSize: 50,
+    margin: 25
+  },
 });

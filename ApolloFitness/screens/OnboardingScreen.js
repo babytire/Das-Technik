@@ -8,6 +8,7 @@ import {
   Picker,
   AsyncStorage
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default class OnboardingScreen extends Component {
   constructor() {
@@ -25,6 +26,10 @@ export default class OnboardingScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <LinearGradient
+          colors={['#bdc3c7', '#2c3e50']}
+          style={styles.gradient}
+        />
         <Text style={{ fontSize: 40, textAlign: "center" }}>
           Welcome to Apollo Fitness
         </Text>
@@ -32,18 +37,21 @@ export default class OnboardingScreen extends Component {
         <TextInput
           style={styles.inputs}
           placeholder="Your name"
+          placeholderTextColor='black'
           onChangeText={text => this.setState({ userName: text })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder="Age"
+          placeholderTextColor='black'
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder="Weight"
+          placeholderTextColor='black'
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
@@ -51,11 +59,13 @@ export default class OnboardingScreen extends Component {
           <TextInput
             style={styles.inputs}
             placeholder="Feet"
+            placeholderTextColor='black'
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
           <TextInput
             style={styles.inputs}
             placeholder="Inches"
+            placeholderTextColor='black'
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
           />
         </View>
@@ -124,5 +134,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#DDDDDD",
     padding: 20
-  }
+  },
+  gradient: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
 });
