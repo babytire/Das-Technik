@@ -8,6 +8,7 @@ import {
   Picker,
   AsyncStorage
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class ProfileScreen extends Component {
   constructor() {
@@ -39,21 +40,28 @@ export default class ProfileScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <LinearGradient
+          colors={["#bdc3c7", "#2c3e50"]}
+          style={styles.gradient}
+        />
         <TextInput
           style={styles.inputs}
           placeholder={this.state.userName}
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ userName: text })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder={this.state.age}
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ age: JSON.stringify(text) })}
         />
 
         <TextInput
           style={styles.inputs}
           placeholder={this.state.weight}
+          placeholderTextColor="black"
           onChangeText={text => this.setState({ weight: JSON.stringify(text) })}
         />
 
@@ -61,11 +69,13 @@ export default class ProfileScreen extends Component {
           <TextInput
             style={styles.inputs}
             placeholder={this.state.feet}
+            placeholderTextColor="black"
             onChangeText={text => this.setState({ feet: JSON.stringify(text) })}
           />
           <TextInput
             style={styles.inputs}
             placeholder={this.state.inch}
+            placeholderTextColor="black"
             onChangeText={text => this.setState({ inch: JSON.stringify(text) })}
           />
         </View>
@@ -148,7 +158,6 @@ export default class ProfileScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 25,
     justifyContent: "center",
     alignItems: "center"
   },
@@ -164,6 +173,14 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     backgroundColor: "#DDDDDD",
-    padding: 20
+    padding: 15,
+    margin: 10
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
   }
 });

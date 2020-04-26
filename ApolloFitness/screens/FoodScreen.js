@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, StatusBar } from "react-native";
-import { Button, Avatar } from "react-native-elements";
+import { StyleSheet, View, Text, StatusBar, Button } from "react-native";
+import { Avatar } from "react-native-elements";
 import Table, { Section, StaticCell } from "react-native-js-tableview";
+import { LinearGradient } from "expo-linear-gradient";
 
 import InputQuery from "../components/InputQuery";
 import MoodTracker from "../components/MoodTracker";
@@ -23,10 +24,10 @@ export default class FoodScreen extends Component {
       entryProt: 0,
 
       moods: [0, 0, 0, 0, 0],
-      currentMood: 2,
+      currentMood: 2
     };
 
-    this.updateIndex = this.updateIndex.bind(this); 
+    this.updateIndex = this.updateIndex.bind(this);
     this.averageMood = this.averageMood.bind(this);
   }
 
@@ -36,10 +37,10 @@ export default class FoodScreen extends Component {
 
   averageMood() {
     let sum = 0;
-    var arr = this.state.moods;
+    const arr = this.state.moods;
 
     arr.forEach(val => (sum += val));
-    let avg = sum / moodOptions;
+    const avg = sum / moodOptions;
 
     const diff = new Array(moodOptions);
 
@@ -66,7 +67,7 @@ export default class FoodScreen extends Component {
     });
     this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
 
-    var arr = this.state.moods;
+    const arr = this.state.moods;
     arr[this.state.selectedIndex] += 1;
     this.setState({ moods: arr });
 
@@ -75,10 +76,10 @@ export default class FoodScreen extends Component {
 
   averageMood() {
     let sum = 0;
-    var arr = this.state.moods;
+    const arr = this.state.moods;
 
     arr.forEach(val => (sum += val));
-    let avg = sum / moodOptions;
+    const avg = sum / moodOptions;
 
     const diff = new Array(moodOptions);
 
@@ -105,7 +106,7 @@ export default class FoodScreen extends Component {
     });
     this.setState({ totalProt: this.state.totalProt + this.state.entryProt });
 
-    var arr = this.state.moods;
+    const arr = this.state.moods;
     arr[this.state.selectedIndex] += 1;
     this.setState({ moods: arr });
 
@@ -117,6 +118,10 @@ export default class FoodScreen extends Component {
 
     return (
       <>
+        <LinearGradient
+          colors={["#bdc3c7", "#2c3e50"]}
+          style={styles.gradient}
+        />
         <StatusBar backgroundColor="black" barStyle="dark-content" />
 
         <View
@@ -124,19 +129,18 @@ export default class FoodScreen extends Component {
             flex: 1,
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#1F1F1F"
+            alignItems: "center"
           }}
         >
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Name"
             placeholder="Enter name here"
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Calories"
@@ -144,7 +148,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryCal: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Fat"
@@ -152,7 +156,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryFat: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Carbohydrates"
@@ -160,7 +164,7 @@ export default class FoodScreen extends Component {
             onChangeText={text => this.setState({ entryCarbs: parseInt(text) })}
           />
           <InputQuery
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             font={styles.lightFont}
             inputFont={styles.lightFont}
             name="Protein"
@@ -170,16 +174,15 @@ export default class FoodScreen extends Component {
         </View>
         <View
           style={{
-            flex: 0,
-            backgroundColor: "#1F1F1F"
+            flex: 0
           }}
         >
-          <Button title="Add Food" onPress={this.onAddFood} />
-            <MoodTracker 
-              style={styles.moodSection} 
-              containerStyle={{ backgroundColor: "#333333" }}
-              onPress={this.updateIndex}
-            />
+          <Button color="black" title="Add Food" onPress={this.onAddFood} />
+          <MoodTracker
+            style={styles.moodSection}
+            containerStyle={{ backgroundColor: "gray" }}
+            onPress={this.updateIndex}
+          />
         </View>
 
         <View
@@ -189,8 +192,7 @@ export default class FoodScreen extends Component {
         >
           <Table
             style={styles.container}
-            theme="dark"
-            accentColor="gold"
+            colorPalette={{ background: "tranparent" }}
             scrollable
           >
             <Section header="Food Intake Rundown">
@@ -226,7 +228,6 @@ export default class FoodScreen extends Component {
                 size="large"
                 rounded
                 title={buttons[this.state.currentMood]}
-                overlayContainerStyle={{ backgroundColor: "#1F1F1F" }}
               />
               <Text style={{ fontSize: 20, color: "white" }}>Average Mood</Text>
             </View>
@@ -243,12 +244,16 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   moodSection: {
-    flex: 0,
-    backgroundColor: "#1F1F1F"
+    flex: 0
   },
   lightFont: {
-    color: "white"
+    color: "black"
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
   }
-
-  // Dark mode: #1F1F1F
 });

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import HealthDisclaimerButton from "../components/HealthDisclaimerButton";
 
 export default class SettingScreen extends Component {
@@ -27,6 +28,10 @@ export default class SettingScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <LinearGradient
+          colors={["#bdc3c7", "#2c3e50"]}
+          style={styles.gradient}
+        />
         <Text style={styles.title}>Hi, {this.state.userName}!</Text>
         <TouchableOpacity
           style={styles.button}
@@ -59,8 +64,7 @@ export default class SettingScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    margin: 20
+    justifyContent: "center"
   },
   title: {
     textAlign: "center",
@@ -72,5 +76,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#DDDDDD",
     padding: 15,
     margin: 10
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0
   }
 });
